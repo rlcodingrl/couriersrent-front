@@ -8,11 +8,13 @@ import Rules from "./Rules";
 import Users from "./Users";
 import Home from "./Home";
 
+// comment
+
 const Main = () => {
   return (
     <div className="main">
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/couriers" element={<Couriers />} />
         <Route path="/rules" element={<Rules />} />
         <Route path="/users" element={<Users />} />
