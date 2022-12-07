@@ -8,8 +8,6 @@ import Rules from "./Rules";
 import Users from "./Users";
 import Home from "./Home";
 
-// comment
-
 const Main = () => {
   return (
     <div className="main">

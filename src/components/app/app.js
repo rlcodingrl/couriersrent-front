@@ -1,15 +1,11 @@
 import "./app.css";
 
-import Header from "../Header";
-import Main from "../Main";
+import { useRoutes } from "../../routes/routes";
 
 function App() {
-  return (
-    <div className="App">
-      <Header />
-      <Main />
-    </div>
-  );
+  let isAuthenticated = false;
+
+  return useRoutes(isAuthenticated);
 }
 
 export default App;
