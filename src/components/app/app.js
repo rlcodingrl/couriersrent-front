@@ -1,13 +1,20 @@
 import "./app.css";
 
-import { useState } from "react";
+import React, { useState } from "react";
 
-import { useRoutes } from "../../routes/routes";
+import { AuthOrApp } from "../AuthOrApp/AuthOrApp";
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const jwt = localStorage.getItem("jwt");
+  const UserContext = React.createContext({ jwt });
 
-  return useRoutes(isAuthenticated);
+  return (
+    <UserContext.Provider value={jwt}>
+      <div className="App">
+        <AuthOrApp />
+      </div>
+    </UserContext.Provider>
+  );
 }
 
 export default App;
