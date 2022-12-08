@@ -2,12 +2,12 @@ import "./app.css";
 
 import React, { useState } from "react";
 
-import { AuthOrApp } from "../AuthOrApp/AuthOrApp";
+import AuthOrApp from "../AuthOrApp/AuthOrApp";
+
+const jwt = localStorage.getItem("jwt");
+export const UserContext = React.createContext(jwt);
 
 function App() {
-  const jwt = localStorage.getItem("jwt");
-  const UserContext = React.createContext({ jwt });
-
   return (
     <UserContext.Provider value={jwt}>
       <div className="App">

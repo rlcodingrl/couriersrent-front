@@ -3,7 +3,7 @@ import { loginHandler } from "../../services/loginHandler";
 
 import "./Auth.css";
 
-const Auth = () => {
+const Auth = ({ setIfValidJwtRes }) => {
   const [form, setForm] = useState({ login: "", password: "" });
   const [error, setError] = useState("");
 
@@ -18,7 +18,7 @@ const Auth = () => {
         action=""
         onSubmit={async (e) => {
           e.preventDefault();
-          let res = await loginHandler(form);
+          let res = await loginHandler(form, setIfValidJwtRes);
           console.log(res);
         }}
       >
