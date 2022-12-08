@@ -1,9 +1,11 @@
 import "./app.css";
 
+import { useState } from "react";
+
 import { useRoutes } from "../../routes/routes";
 
 function App() {
-  let isAuthenticated = false;
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   return useRoutes(isAuthenticated);
 }

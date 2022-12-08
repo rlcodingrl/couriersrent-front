@@ -67,6 +67,6 @@ const couriersData = [
   },
 ];
 
-console.log(couriersData[0]["name"]);
+// console.log(couriersData[0]["name"]);
 
 export default couriersData;
