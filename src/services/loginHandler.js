@@ -1,6 +1,12 @@
 import { back } from "../config/config";
+import { transformUserData } from "./transformUserData";
 
-export const loginHandler = async ({ login, password }, setIfValidJwtRes) => {
+export const loginHandler = async (
+  { login, password },
+  setIfAuthenticated,
+  user,
+  setUser
+) => {
   var myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
 
@@ -19,11 +25,16 @@ export const loginHandler = async ({ login, password }, setIfValidJwtRes) => {
     .then((response) => response.json())
     .then((result) => {
       if (result.user) {
-        console.log(result);
-        console.log("login success");
-        console.log(result.data.access_token);
-        localStorage.setItem("jwt", result.data.access_token);
-        setIfValidJwtRes(true);
+        // console.log(result);
+        // console.log("login success");
+        // console.log(result.data.access_token);
+        // console.log(result.user);
+
+        let userData = transformUserData(result);
+        // console.log(userData);
+        setUser(userData);
+        localStorage.setItem("jwt", userData.jwt);
+        setIfAuthenticated(true);
       }
       return result;
     })

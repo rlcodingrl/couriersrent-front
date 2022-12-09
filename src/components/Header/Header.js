@@ -9,7 +9,7 @@ import jwtService from "../../services/jwtService";
 
 const Header = () => {
   const newJwtService = new jwtService();
-  console.log(newJwtService.decodeJwt());
+  // console.log(newJwtService.decodeJwt());
 
   return (
     <div className="header">

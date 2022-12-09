@@ -1,20 +1,24 @@
 import { back } from "../config/config";
+import { transformUserData } from "./transformUserData";
 
-export const ifValidJwtFunc = async (jwt, setIfValidJwtRes) => {
+export const ifValidJwtFunc = async (jwt, setIfValidJwtRes, setUser) => {
   var myHeaders = new Headers();
   myHeaders.append("Authorization", `Bearer ${jwt}`);
+
   var requestOptions = {
     method: "GET",
     headers: myHeaders,
     redirect: "follow",
   };
-  let res = await fetch(`${back}/couriers/free`, requestOptions)
+
+  let res = await fetch(`${back}/user/me`, requestOptions)
     .then((response) => response.json())
     .then((result) => {
-      // console.log(result);
-      // console.log(result.status);
-      if (result.data) {
-        // console.log("token valid");
+      console.log(result);
+      // if uncomment this console log it will appear 8 times ??
+      if (result.success === true) {
+        let userData = transformUserData(result);
+        setUser(userData);
         setIfValidJwtRes(true);
         return true;
       }
@@ -22,4 +26,22 @@ export const ifValidJwtFunc = async (jwt, setIfValidJwtRes) => {
     })
     .catch((error) => console.log("error", error));
   return res;
+  // var myHeaders = new Headers();
+  // myHeaders.append("Authorization", `Bearer ${jwt}`);
+  // var requestOptions = {
+  //   method: "GET",
+  //   headers: myHeaders,
+  //   redirect: "follow",
+  // };
+  // let res = await fetch(`${back}/couriers/free`, requestOptions)
+  //   .then((response) => response.json())
+  //   .then((result) => {
+  //     if (result.data) {
+  //       setIfValidJwtRes(true);
+  //       return true;
+  //     }
+  //     return result;
+  //   })
+  //   .catch((error) => console.log("error", error));
+  // return res;
 };

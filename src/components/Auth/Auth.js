@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { loginHandler } from "../../services/loginHandler";
+import { UserContext } from "../app/app";
 
 import "./Auth.css";
 
-const Auth = ({ setIfValidJwtRes }) => {
+const Auth = ({ setIfAuthenticated }) => {
+  let { user, setUser } = useContext(UserContext);
+
   const [form, setForm] = useState({ login: "", password: "" });
 
   const changeHandler = (event) => {
@@ -17,8 +20,8 @@ const Auth = ({ setIfValidJwtRes }) => {
         action=""
         onSubmit={async (e) => {
           e.preventDefault();
-          let res = await loginHandler(form, setIfValidJwtRes);
-          console.log(res);
+          let res = await loginHandler(form, setIfAuthenticated, user, setUser);
+          // console.log(res);
         }}
       >
         <div>
