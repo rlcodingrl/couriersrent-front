@@ -8,16 +8,13 @@ export const ifValidJwtFunc = async (jwt, setIfValidJwtRes) => {
     headers: myHeaders,
     redirect: "follow",
   };
-  let res = await fetch(
-    `http://api.couriersrent.online/couriers/free`,
-    requestOptions
-  )
+  let res = await fetch(`${back}/couriers/free`, requestOptions)
     .then((response) => response.json())
     .then((result) => {
-      console.log(result);
+      // console.log(result);
       // console.log(result.status);
       if (result.data) {
-        console.log("token valid");
+        // console.log("token valid");
         setIfValidJwtRes(true);
         return true;
       }

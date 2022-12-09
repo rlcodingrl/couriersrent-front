@@ -13,6 +13,7 @@ const Couriers = () => {
   return (
     <div className="couriers">
       this is couriers comp
+      <span>click test</span>
       <CouriersNav />
       <CouriersList couriersData={couriers} />
     </div>
