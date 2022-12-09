@@ -5,7 +5,6 @@ import "./Auth.css";
 
 const Auth = ({ setIfValidJwtRes }) => {
   const [form, setForm] = useState({ login: "", password: "" });
-  const [error, setError] = useState("");
 
   const changeHandler = (event) => {
     setForm({ ...form, [event.target.name]: event.target.value });

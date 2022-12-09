@@ -7,21 +7,18 @@ import { ifValidJwtFunc } from "../../services/ifValidJwtFunc";
 import { useState } from "react";
 
 const AuthOrApp = () => {
-  let jwt = useContext(UserContext);
+  let { user } = useContext(UserContext);
+  console.log(user);
   const [ifValidJwtRes, setIfValidJwtRes] = useState(false);
-  ifValidJwtFunc(jwt, setIfValidJwtRes);
+  ifValidJwtFunc(user.jwt, setIfValidJwtRes);
 
-  return (
+  return ifValidJwtRes ? (
     <>
-      {ifValidJwtRes ? (
-        <>
-          <Header />
-          <Main />
-        </>
-      ) : (
-        <Auth setIfValidJwtRes={setIfValidJwtRes} />
-      )}
+      <Header />
+      <Main />
     </>
+  ) : (
+    <Auth setIfValidJwtRes={setIfValidJwtRes} />
   );
 };
 export default AuthOrApp;

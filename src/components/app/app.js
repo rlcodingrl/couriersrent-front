@@ -4,12 +4,13 @@ import React, { useState } from "react";
 
 import AuthOrApp from "../AuthOrApp/AuthOrApp";
 
-const jwt = localStorage.getItem("jwt");
-export const UserContext = React.createContext(jwt);
+export const UserContext = React.createContext({});
 
 function App() {
+  const [user, setUser] = useState({ jwt: localStorage.getItem("jwt") });
+  console.log(user);
   return (
-    <UserContext.Provider value={jwt}>
+    <UserContext.Provider value={{ user, setUser }}>
       <div className="App">
         <AuthOrApp />
       </div>
