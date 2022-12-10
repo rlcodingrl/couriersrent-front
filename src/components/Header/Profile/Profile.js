@@ -6,14 +6,15 @@ import { NavLink } from "react-router-dom";
 import "./Profile.css";
 
 const Profile = () => {
-  const { user, setUser } = useContext(UserContext);
+  const { user, setUser, ifAuthenticated, setIfAuthenticated } =
+    useContext(UserContext);
   console.log(user);
   return (
     <div className="profile">
       {user.balance}$ {user.name}{" "}
       <NavLink
         onClick={() => {
-          logout(setUser);
+          logout(setUser, setIfAuthenticated);
           console.log("works onclick");
         }}
         to="/"

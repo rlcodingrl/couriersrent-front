@@ -7,9 +7,8 @@ import { ifValidJwtFunc } from "../../services/ifValidJwtFunc";
 import { useState } from "react";
 
 const AuthOrApp = () => {
-  let { user, setUser } = useContext(UserContext);
-
-  const [ifAuthenticated, setIfAuthenticated] = useState(false);
+  let { user, setUser, ifAuthenticated, setIfAuthenticated } =
+    useContext(UserContext);
 
   console.log(ifAuthenticated);
 
