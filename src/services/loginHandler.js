@@ -33,6 +33,7 @@ export const loginHandler = async (
         let userData = transformUserData(result);
         // console.log(userData);
         setUser(userData);
+        console.log("login hadnler works");
         localStorage.setItem("jwt", userData.jwt);
         setIfAuthenticated(true);
       }

@@ -4,5 +4,7 @@ export const transformUserData = (result) => {
   finalUserData.id = result.user._id;
   finalUserData.name = result.user.name;
   finalUserData.wallet = result.user.wallet;
+  finalUserData.balance = result.user.balance;
+  finalUserData.role = result.user.role;
   return finalUserData;
 };
