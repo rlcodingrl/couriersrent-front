@@ -1,16 +1,20 @@
-import React from "react";
-// import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+
 import { NavLink } from "react-router-dom";
+import { UserContext } from "../../app/app";
 
 import "./Nav.css";
 
 const Nav = () => {
+  const { user } = useContext(UserContext);
+  console.log(user.role);
+
   return (
     <div className="nav">
-      <NavLink to="/home">Home</NavLink>
+      <NavLink to="/home">Home / News</NavLink>
       <NavLink to="/couriers">Couriers</NavLink>
       <NavLink to="/rules">Faq / Rules</NavLink>
-      <NavLink to="/users">Users</NavLink>
+      {user.role === "admin" ? <NavLink to="/users">Users</NavLink> : null}
     </div>
   );
 };
