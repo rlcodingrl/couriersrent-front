@@ -12,7 +12,8 @@ const Nav = () => {
   return (
     <div className="nav">
       <NavLink to="/home">Home / News</NavLink>
-      <NavLink to="/couriers">Couriers</NavLink>
+      <NavLink to="/couriers-free">Couriers free</NavLink>
+      <NavLink to="/couriers-reserved">Couriers reserved</NavLink>
       <NavLink to="/rules">Faq / Rules</NavLink>
       {user.role === "admin" ? <NavLink to="/users">Users</NavLink> : null}
     </div>
