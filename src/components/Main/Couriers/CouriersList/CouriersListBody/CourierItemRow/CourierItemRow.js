@@ -1,16 +1,13 @@
-import React, { useContext } from "react";
+import React from "react";
 
 import "./CourierItemRow.css";
 
 import CourierItemRowMenu from "./CouriersItemRowMenu";
 
-import { UserContext } from "../../../../../app/app";
 
 
 const CourierItemRow = ({ courier }) => {
 
-  const {user} = useContext(UserContext);
-  console.log(user)
 
   return (
     <div className="couriers-item-row">
