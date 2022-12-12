@@ -1,33 +1,24 @@
 import React, { useContext } from "react";
 
-import "./CourierItemRow.css";
+import "./CouriersItemRowMenu.css";
 
-import { UserContext } from "../../../../../app/app";
+import { UserContext } from "../../../../../../app/app";
 
+const CourierItemRowMenu = () => {
 
-const CourierItemRow = ({ courier, consoleLogFunc }) => {
+  const {user} = useContext(UserContext)
 
-  const {user} = useContext(UserContext);
   console.log(user)
 
   return (
-    <div className="couriers-item-row">
-      <div className="couriers-item-row__col couriers-item-row__name">
-        {courier["name"]}
-      </div>
-      <div className="couriers-item-row__col">{courier["Pers/Bus"]}</div>
-      <div className="couriers-item-row__col">{courier["Summ"]}</div>
-      <div className="couriers-item-row__col">{courier["Bank"]}</div>
-      <div className="couriers-item-row__col">Citi, Wells</div>
-      <div className="couriers-item-row__col">{courier["Started day"]}</div>
-      <div className="couriers-item-row__col">{courier["Status"]}</div>
-      <div className="couriers-item-row__col" onClick={consoleLogFunc}>
+    <>
+      <div className="couriers-item-row__col">
         Full info
       </div>
-      <div className="couriers-item-row__col">Edit</div>
-      <div className="couriers-item-row__col">Delete</div>
-    </div>
+      {user.role === 'admin'?<div className="couriers-item-row__col">Edit</div>:null}
+      {user.role === 'admin'?<div className="couriers-item-row__col">Delete</div>:null}
+    </>
   );
 };
 
-export default CourierItemRow;
+export default CourierItemRowMenu;

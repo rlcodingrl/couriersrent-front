@@ -5,9 +5,6 @@ import CourierItemRow from "./CourierItemRow/CourierItemRow";
 import "./CouriersListBody.css";
 
 const CouriersListBody = ({ couriersData }) => {
-  const consoleLogFunc = () => {
-    console.log("consoleLogFunc");
-  };
 
   return (
     <div className="couriers-list-body">
@@ -15,7 +12,6 @@ const CouriersListBody = ({ couriersData }) => {
         <CourierItemRow
           courier={el}
           key={el.id}
-          consoleLogFunc={consoleLogFunc}
         />
       ))}
     </div>

@@ -2,10 +2,12 @@ import React, { useContext } from "react";
 
 import "./CourierItemRow.css";
 
+import CourierItemRowMenu from "./CouriersItemRowMenu";
+
 import { UserContext } from "../../../../../app/app";
 
 
-const CourierItemRow = ({ courier, consoleLogFunc }) => {
+const CourierItemRow = ({ courier }) => {
 
   const {user} = useContext(UserContext);
   console.log(user)
@@ -21,11 +23,10 @@ const CourierItemRow = ({ courier, consoleLogFunc }) => {
       <div className="couriers-item-row__col">Citi, Wells</div>
       <div className="couriers-item-row__col">{courier["Started day"]}</div>
       <div className="couriers-item-row__col">{courier["Status"]}</div>
-      <div className="couriers-item-row__col" onClick={consoleLogFunc}>
-        Full info
-      </div>
-      <div className="couriers-item-row__col">Edit</div>
-      <div className="couriers-item-row__col">Delete</div>
+
+      <CourierItemRowMenu/>
+
+
     </div>
   );
 };
