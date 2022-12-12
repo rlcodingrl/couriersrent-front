@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { loginHandler } from "../../services/loginHandler";
 import { UserContext } from "../app/app";
 
@@ -20,7 +20,7 @@ const Auth = ({ setIfAuthenticated }) => {
         action=""
         onSubmit={async (e) => {
           e.preventDefault();
-          let res = await loginHandler(form, setIfAuthenticated, user, setUser);
+          await loginHandler(form, setIfAuthenticated, user, setUser);
           // console.log(res);
         }}
       >

@@ -6,9 +6,9 @@ import { NavLink } from "react-router-dom";
 import "./Profile.css";
 
 const Profile = () => {
-  const { user, setUser, ifAuthenticated, setIfAuthenticated } =
+  const { user, setUser, setIfAuthenticated } =
     useContext(UserContext);
-  console.log(user);
+  // console.log(user);
   return (
     <div className="profile">
       {user.balance}$ {user.name}{" "}

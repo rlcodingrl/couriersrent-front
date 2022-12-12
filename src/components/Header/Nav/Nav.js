@@ -7,7 +7,7 @@ import "./Nav.css";
 
 const Nav = () => {
   const { user } = useContext(UserContext);
-  console.log(user.role);
+  // console.log(user.role);
 
   return (
     <div className="nav">

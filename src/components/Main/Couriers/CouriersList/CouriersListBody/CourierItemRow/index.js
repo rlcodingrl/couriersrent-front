@@ -1,3 +1,3 @@
-import CouriersNav from "./CouriersList";
+import CourierItemRow from "./CourierItemRow";
 
-export default CouriersNav;
+export default CourierItemRow;

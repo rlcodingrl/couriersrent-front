@@ -5,10 +5,10 @@ import Profile from "./Profile";
 
 import "./Header.css";
 
-import jwtService from "../../services/jwtService";
+// import jwtService from "../../services/jwtService";
 
 const Header = () => {
-  const newJwtService = new jwtService();
+  // const newJwtService = new jwtService();
   // console.log(newJwtService.decodeJwt());
 
   return (

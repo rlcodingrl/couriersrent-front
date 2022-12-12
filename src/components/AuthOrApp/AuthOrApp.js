@@ -4,13 +4,12 @@ import Auth from "../Auth";
 import React, { useContext, useEffect } from "react";
 import { UserContext } from "../app/app";
 import { ifValidJwtFunc } from "../../services/ifValidJwtFunc";
-import { useState } from "react";
 
 const AuthOrApp = () => {
   let { user, setUser, ifAuthenticated, setIfAuthenticated } =
     useContext(UserContext);
 
-  console.log(ifAuthenticated);
+  // console.log(ifAuthenticated);
 
   useEffect(() => {
     ifValidJwtFunc(user.jwt, setIfAuthenticated, setUser);

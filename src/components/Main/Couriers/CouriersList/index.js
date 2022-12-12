@@ -1,3 +1,3 @@
-import CouriersNav from "./CouriersList";
+import CouriersList from "./CouriersList";
 
-export default CouriersNav;
+export default CouriersList;
