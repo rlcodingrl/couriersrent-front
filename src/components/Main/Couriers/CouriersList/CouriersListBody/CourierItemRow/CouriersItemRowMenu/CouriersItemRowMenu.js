@@ -10,8 +10,6 @@ const CourierItemRowMenu = () => {
   const {user} = useContext(UserContext)
   const courierStatus=useContext(StatusContext)
 
-  // console.log(user)
-  // console.log(courierStatus)
 
   return (
     <div className="couriers-item-row-menu">

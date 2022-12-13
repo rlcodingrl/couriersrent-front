@@ -9,7 +9,7 @@ const CouriersList = ({ couriersData }) => {
   return (
     <div className="couriers-list">
       <CourierListHeader />
-      <CourierListBody couriersData={couriersData} />
+      <CourierListBody/>
     </div>
   );
 };

@@ -14,12 +14,12 @@ const CourierItemRow = ({ courier }) => {
       <div className="couriers-item-row__col couriers-item-row__name">
         {courier["name"]}
       </div>
-      <div className="couriers-item-row__col">{courier["Pers/Bus"]}</div>
-      <div className="couriers-item-row__col">{courier["Summ"]}</div>
-      <div className="couriers-item-row__col">{courier["Bank"]}</div>
-      <div className="couriers-item-row__col">Citi, Wells</div>
-      <div className="couriers-item-row__col">{courier["Started day"]}</div>
-      <div className="couriers-item-row__col">{courier["Status"]}</div>
+      <div className="couriers-item-row__col">{courier["type"]}</div>
+      <div className="couriers-item-row__col">{courier["amount"]}</div>
+      <div className="couriers-item-row__col">{courier["bank"]}</div>
+      <div className="couriers-item-row__col">{courier["used_banks"]}</div>
+      <div className="couriers-item-row__col">{courier["startedDay"]}</div>
+      <div className="couriers-item-row__col">{courier["status"]}</div>
 
       <CourierItemRowMenu/>
 
