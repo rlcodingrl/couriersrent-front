@@ -1,21 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import CourierItemRow from "./CourierItemRow/CourierItemRow";
 
 import "./CouriersListBody.css";
+import getCouriers from "../../../../../services/getCouriers";
 
 const CouriersListBody = ({ couriersData }) => {
 
-  const couriersData2 = 
+  const [couriersData2, setCouriersData2] = useState(couriersData);
 
-  
+  useEffect(()=>{
+    getCouriers(setCouriersData2)
+  },[])
 
   return (
     <div className="couriers-list-body">
-      {couriersData.map((el) => (
+      {couriersData2.map((el) => (
         <CourierItemRow
           courier={el}
-          key={el.id}
+          key={el._id}
         />
       ))}
     </div>

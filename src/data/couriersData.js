@@ -19,7 +19,7 @@ const couriersData = [
     "User who res": "User1",
     Comment: "Deposit 70k",
     Chat: "string?",
-    id: 1000001,
+    _id: 1000001,
   },
   {
     name: "MDC Delivery LLC2",
@@ -41,7 +41,7 @@ const couriersData = [
     "User who res": "User1",
     Comment: "Deposit 70k",
     Chat: "string?",
-    id: 1000002,
+    _id: 1000002,
   },
   {
     name: "MDC Delivery LLC3",
@@ -63,7 +63,7 @@ const couriersData = [
     "User who res": "User1",
     Comment: "Deposit 70k",
     Chat: "string?",
-    id: 1000003,
+    _id: 1000003,
   },
 ];
 
