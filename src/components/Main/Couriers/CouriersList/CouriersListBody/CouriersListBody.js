@@ -6,6 +6,10 @@ import "./CouriersListBody.css";
 
 const CouriersListBody = ({ couriersData }) => {
 
+  const couriersData2 = 
+
+  
+
   return (
     <div className="couriers-list-body">
       {couriersData.map((el) => (

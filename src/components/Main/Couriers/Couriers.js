@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 import "./Couriers.css";
 
@@ -7,11 +7,17 @@ import CouriersList from "./CouriersList/CouriersList";
 
 import couriersData from "../../../data/couriersData";
 
+import { UserContext } from "../../app/app";
+
+
 export const StatusContext = React.createContext({});
 
 const Couriers = ({status}) => {
 
   const [courierStatus]=useState(status)
+
+  const {user} = useContext(UserContext);
+  console.log(user.jwt)
 
   const [couriers] = useState(couriersData);
 
