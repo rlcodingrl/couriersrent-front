@@ -1,28 +1,46 @@
 import { back } from "../config/config";
 
-const getCouriers = async (setCouriersData, courierStatus) => {
-    // console.log('getCouriers works')
+const getCouriers = async (setCouriersData, courierStatus, user) => {
 
-    if (courierStatus ==='reserved') {
-        courierStatus = 'res'
+    const jwt = localStorage.getItem('jwt')  
+
+    if (courierStatus === "reserved") {
+      courierStatus = "res";
     }
 
-    var myHeaders = new Headers();
-myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzkwOTg5Y2FkMzhkNjM0M2VmNWFjYTEiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NzA5MjIwNzQsImV4cCI6MTY3MTA5NDg3NH0.Aady9qHhy1_PaPRG4lvS7-fK0lYqH8xDau1UyLdvUkM");
+  const filterCouriers = (courierList)=> {
+    if ((courierStatus==='res')&&(user.role==='user')) {
+        console.log('condition works')
+        console.log(user.name)
+        console.log(courierList)
+        return courierList.filter((el) => el.status === user.name )
+    }
+    return courierList
+  }
 
-var requestOptions = {
-  method: 'GET',
-  headers: myHeaders,
-  redirect: 'follow'
+
+
+
+  var myHeaders = new Headers();
+  myHeaders.append(
+    "Authorization",
+    `Bearer ${jwt}`
+  );
+
+  var requestOptions = {
+    method: "GET",
+    headers: myHeaders,
+    redirect: "follow",
+  };
+
+  fetch(`${back}/couriers/${courierStatus}`, requestOptions)
+    .then((response) => response.json())
+    .then((result) => {
+      // console.log(result)
+      // console.log(result.data.couriers);
+      setCouriersData(filterCouriers(result.data.couriers));
+    })
+    .catch((error) => console.log("error", error));
 };
 
-fetch(`${back}/couriers/${courierStatus}`, requestOptions)
-  .then(response => response.json())
-  .then(result => {
-    // console.log(result.data.couriers);
-    setCouriersData(result.data.couriers)
-  })
-  .catch(error => console.log('error', error));
-}
-
-export default getCouriers
+export default getCouriers;

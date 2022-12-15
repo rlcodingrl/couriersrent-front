@@ -15,7 +15,6 @@ const Couriers = ({status}) => {
   const [courierStatus]=useState(status)
 
   const {user} = useContext(UserContext);
-  // console.log(user.jwt)
 
 
   return (

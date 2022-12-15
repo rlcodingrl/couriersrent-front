@@ -4,22 +4,24 @@ import CourierItemRow from "./CourierItemRow/CourierItemRow";
 
 import "./CouriersListBody.css";
 import getCouriers from "../../../../../services/getCouriers";
-import couriersData from "../../../../../data/couriersData";
+import couriersDataDef from "../../../../../data/couriersDataDef";
 import { StatusContext } from "../../Couriers";
+import { UserContext } from "../../../../app/app";
 
 const CouriersListBody = () => {
 
-  const [couriersData2, setCouriersData2] = useState(couriersData);
+  const [couriersData, setCouriersData] = useState(couriersDataDef);
+  let { user, setUser } = useContext(UserContext);
 
   const courierStatus=useContext(StatusContext)
 
   useEffect(()=>{
-    getCouriers(setCouriersData2,courierStatus)
+    getCouriers(setCouriersData,courierStatus,user)
   },[])
 
   return (
     <div className="couriers-list-body">
-      {couriersData2.map((el) => (
+      {couriersData.map((el) => (
         <CourierItemRow
           courier={el}
           key={el._id}
