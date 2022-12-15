@@ -10,9 +10,6 @@ const getCouriers = async (setCouriersData, courierStatus, user) => {
 
   const filterCouriers = (courierList)=> {
     if ((courierStatus==='res')&&(user.role==='user')) {
-        console.log('condition works')
-        console.log(user.name)
-        console.log(courierList)
         return courierList.filter((el) => el.status === user.name )
     }
     return courierList
