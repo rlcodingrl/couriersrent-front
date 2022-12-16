@@ -9,31 +9,31 @@ import { UserContext } from "../../app/app";
 import FullInfoCourier from "./FullInfoCourier";
 
 export const StatusContext = React.createContext({});
-export const ifFullInfoActiveContext = React.createContext({});
+export const fullInfoContext = React.createContext({});
 
 
 const Couriers = ({status}) => {
 
   const [courierStatus]=useState(status)
-  const [ifFullInfoActive,setFullInfoActive] = useState(false)
-  // console.log(ifFullInfoActive)
-  
+  const [fullInfo,setFullInfo] = useState({active: false, userId: ''})
+
+  console.log(fullInfo)
 
   const {user} = useContext(UserContext);
 
 
   return (
     <StatusContext.Provider value={courierStatus}>
-    <ifFullInfoActiveContext.Provider value={{ifFullInfoActive, setFullInfoActive}}>
+    <fullInfoContext.Provider value={{fullInfo, setFullInfo}}>
 
       <div className="couriers">
-        this is couriers comp {status} <span onClick={()=>{setFullInfoActive(true);console.log(ifFullInfoActive)}}>open full info</span>
+        this is couriers comp {status} <span onClick={()=>{setFullInfo({active: true});console.log(fullInfo)}}>open full info</span>
         <CouriersNav />
         <CouriersList />
       </div>
       
       <FullInfoCourier></FullInfoCourier>
-      </ifFullInfoActiveContext.Provider> 
+      </fullInfoContext.Provider> 
     </StatusContext.Provider>
   );
 };
