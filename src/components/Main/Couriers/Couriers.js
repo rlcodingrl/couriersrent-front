@@ -16,7 +16,7 @@ const Couriers = ({status}) => {
 
   const [courierStatus]=useState(status)
   const [ifFullInfoActive,setFullInfoActive] = useState(false)
-  console.log(ifFullInfoActive)
+  // console.log(ifFullInfoActive)
   
 
   const {user} = useContext(UserContext);
@@ -24,14 +24,15 @@ const Couriers = ({status}) => {
 
   return (
     <StatusContext.Provider value={courierStatus}>
+    <ifFullInfoActiveContext.Provider value={{ifFullInfoActive, setFullInfoActive}}>
+
       <div className="couriers">
         this is couriers comp {status} <span onClick={()=>{setFullInfoActive(true);console.log(ifFullInfoActive)}}>open full info</span>
         <CouriersNav />
         <CouriersList />
       </div>
-
-      <ifFullInfoActiveContext.Provider value={{ifFullInfoActive, setFullInfoActive}}>
-        <FullInfoCourier></FullInfoCourier>
+      
+      <FullInfoCourier></FullInfoCourier>
       </ifFullInfoActiveContext.Provider> 
     </StatusContext.Provider>
   );

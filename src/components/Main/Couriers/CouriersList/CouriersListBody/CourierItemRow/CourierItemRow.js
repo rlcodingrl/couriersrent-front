@@ -8,7 +8,6 @@ import CourierItemRowMenu from "./CouriersItemRowMenu";
 
 const CourierItemRow = ({ courier }) => {
 
-
   return (
     <div className="couriers-item-row">
       <div className="couriers-item-row__col couriers-item-row__name">
@@ -20,8 +19,8 @@ const CourierItemRow = ({ courier }) => {
       <div className="couriers-item-row__col">{courier["used_banks"]}</div>
       <div className="couriers-item-row__col">{courier["startedDay"]}</div>
       <div className="couriers-item-row__col">{courier["status"]}</div>
-
-      <CourierItemRowMenu/>
+      {/* {console.log(courier)} */}
+      <CourierItemRowMenu courierId={courier._id}/>
 
 
     </div>
