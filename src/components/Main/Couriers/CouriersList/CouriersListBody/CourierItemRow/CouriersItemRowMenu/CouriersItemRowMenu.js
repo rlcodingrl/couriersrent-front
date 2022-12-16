@@ -18,7 +18,7 @@ const CourierItemRowMenu = () => {
       {user.role === 'admin'?<div className="couriers-item-row__col">Delete</div>:null}
 
       {(user.role === 'user')&&(courierStatus==='free')?<div className="couriers-item-row__col">Reserve</div>:null}
-      {(user.role === 'user')&&(courierStatus==='reserved')?<div className="couriers-item-row__col">Full info</div>:null}
+      {(user.role === 'user')&&(courierStatus==='reserved')?<div className="couriers-item-row__col" onClick={()=>{console.log('full info')}}>Full info</div>:null}
       {(user.role === 'user')&&(courierStatus==='reserved')?<div className="couriers-item-row__col">Unreserve</div>:null}
     </div>
   );

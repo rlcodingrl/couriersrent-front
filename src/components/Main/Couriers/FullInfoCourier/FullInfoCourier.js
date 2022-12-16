@@ -2,14 +2,17 @@ import React, { useState, useContext } from "react";
 
 import "./FullInfoCourier.css";
 
-const FullInfoCourier = ({active, setActive, chosenCourier}) => {
+import { ifFullInfoActiveContext } from "../Couriers";
+
+const FullInfoCourier = ({chosenCourier}) => {
 
   const [courier]=useState(chosenCourier)
+  const {ifFullInfoActive,setFullInfoActive}=useContext(ifFullInfoActiveContext)
 
   return (
-    <div className={active?"full-info-courier active":"full-info-courier"}>
+    <div className={ifFullInfoActive?"full-info-courier active":"full-info-courier"}>
       FullInfoCourier component
-      <span class='close-btn' onClick={()=>{console.log('close btn');setActive(false);}}>Close btn</span>
+      <span className='close-btn' onClick={()=>{setFullInfoActive(false);}}>Close btn</span>
     </div>
   );
 };
