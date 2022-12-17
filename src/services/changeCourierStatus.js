@@ -1,6 +1,6 @@
 import { back } from "../config/config";
 
-const changeCourierStatus = async (courierId, newStatus) => {
+const changeCourierStatus = async (courierId, newStatus, funcToUpdateCourierList) => {
   console.log('changeCourierStatus works')
   const token = localStorage.getItem('jwt')
 
@@ -21,7 +21,11 @@ const changeCourierStatus = async (courierId, newStatus) => {
   
   fetch(`${back}/couriers/change/status/${courierId}`, requestOptions)
     .then(response => response.text())
-    .then(result => console.log(result))
+    .then(result => 
+      {
+        console.log(result);
+        funcToUpdateCourierList(prev=>prev+1)
+      })
     .catch(error => console.log('error', error));
 }
 
