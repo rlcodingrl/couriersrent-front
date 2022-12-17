@@ -5,7 +5,7 @@ import "./CouriersList.css";
 import CourierListHeader from "./CouriersListHeader/CouriersListHeader";
 import CourierListBody from "./CouriersListBody/CouriersListBody";
 
-const CouriersList = ({ couriersData }) => {
+const CouriersList = () => {
   return (
     <div className="couriers-list">
       <CourierListHeader />

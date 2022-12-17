@@ -6,6 +6,7 @@ import { UserContext } from "../../../../../../app/app";
 import { StatusContext } from "../../../../Couriers";
 import { fullInfoContext } from "../../../../Couriers";
 
+import changeCourierStatus from "../../../../../../../services/changeCourierStatus";
 
 const CourierItemRowMenu = ({courierId}) => {
 
@@ -22,7 +23,9 @@ const CourierItemRowMenu = ({courierId}) => {
       {user.role === 'admin'?<div className="couriers-item-row__col def-btn">Edit</div>:null}
       {user.role === 'admin'?<div className="couriers-item-row__col def-btn">Delete</div>:null}
 
-      {(user.role === 'user')&&(courierStatus==='free')?<div className="couriers-item-row__col def-btn">Reserve</div>:null}
+      {(user.role === 'user')&&(courierStatus==='free')
+        ?<div className="couriers-item-row__col def-btn" onClick={()=>{changeCourierStatus(courierId,user.name)}}>Reserve</div>
+        :null}
       {(user.role === 'user')&&(courierStatus==='reserved')?<div className="couriers-item-row__col def-btn" onClick={()=>{setFullInfo({active: true, courierId: courierId});console.log(courierId)}}>Full info</div>:null}
       {(user.role === 'user')&&(courierStatus==='reserved')?<div className="couriers-item-row__col def-btn">Unreserve</div>:null}
     </div>
