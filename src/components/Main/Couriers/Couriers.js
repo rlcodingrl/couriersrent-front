@@ -17,8 +17,8 @@ const Couriers = ({status}) => {
   const [courierStatus]=useState(status)
   const [fullInfo,setFullInfo] = useState({active: false, userId: ''})  // this state is object about component fullInfo that describe {active,id}
 
-  console.log(fullInfo)
-
+  // console.log(fullInfo)
+  // eslint-disable-next-line
   const {user} = useContext(UserContext);
 
 
@@ -27,7 +27,7 @@ const Couriers = ({status}) => {
     <fullInfoContext.Provider value={{fullInfo, setFullInfo}}>
 
       <div className="couriers">
-        this is couriers comp {status} <span onClick={()=>{setFullInfo({active: true});console.log(fullInfo)}}>open full info</span>
+        this is couriers comp {status} 
         <CouriersNav />
         <CouriersList />
       </div>

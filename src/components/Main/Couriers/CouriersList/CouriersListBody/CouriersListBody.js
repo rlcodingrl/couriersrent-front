@@ -10,14 +10,19 @@ import { UserContext } from "../../../../app/app";
 
 const CouriersListBody = () => {
 
+  // const [courierListBodyCounter, setCourierListBodyCounter] = useState(0)
+
   const [couriersData, setCouriersData] = useState(couriersDataDef);
+
+  // eslint-disable-next-line
   let { user, setUser } = useContext(UserContext);
 
   const courierStatus=useContext(StatusContext)
 
+  // eslint-disable-next-line
   useEffect(()=>{
     getCouriers(setCouriersData,courierStatus,user)
-  },[])
+  },[user,courierStatus])
 
   return (
     <div className="couriers-list-body">

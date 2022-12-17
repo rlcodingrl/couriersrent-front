@@ -24,10 +24,18 @@ const CourierItemRowMenu = ({courierId}) => {
       {user.role === 'admin'?<div className="couriers-item-row__col def-btn">Delete</div>:null}
 
       {(user.role === 'user')&&(courierStatus==='free')
-        ?<div className="couriers-item-row__col def-btn" onClick={()=>{changeCourierStatus(courierId,user.name)}}>Reserve</div>
+        ?<div className="couriers-item-row__col def-btn" 
+              onClick={()=>{changeCourierStatus(courierId,user.name)}}>
+                Reserve
+         </div>
         :null}
       {(user.role === 'user')&&(courierStatus==='reserved')?<div className="couriers-item-row__col def-btn" onClick={()=>{setFullInfo({active: true, courierId: courierId});console.log(courierId)}}>Full info</div>:null}
-      {(user.role === 'user')&&(courierStatus==='reserved')?<div className="couriers-item-row__col def-btn">Unreserve</div>:null}
+      {(user.role === 'user')&&(courierStatus==='reserved')
+        ?<div className="couriers-item-row__col def-btn"
+              onClick={()=>{changeCourierStatus(courierId,'Free')}}>
+                Unreserve
+         </div>
+        :null}
     </div>
   );
 };
