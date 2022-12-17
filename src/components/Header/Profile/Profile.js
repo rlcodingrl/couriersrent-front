@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { UserContext } from "../../app/app";
-import { logout } from "../../../services/logout";
+// import { logout } from "../../../services/auth/logout";
+import { logout } from "../../../services/auth/logout";
 import { NavLink } from "react-router-dom";
 
 import "./Profile.css";

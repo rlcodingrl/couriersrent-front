@@ -1,4 +1,4 @@
-import { back } from "../config/config";
+import { back } from "../../config/config";
 import { transformUserData } from "./transformUserData";
 
 export const ifValidJwtFunc = async (jwt, setIfValidJwtRes, setUser) => {

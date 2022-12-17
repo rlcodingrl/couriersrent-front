@@ -12,18 +12,19 @@ const CourierItemRowMenu = ({courierId}) => {
   const {user} = useContext(UserContext)
   const courierStatus=useContext(StatusContext)
 
+  // eslint-disable-next-line
   const {fullInfo,setFullInfo}=useContext(fullInfoContext)
 
 
   return (
     <div className="couriers-item-row-menu">
-      {user.role === 'admin'?<div className="couriers-item-row__col">Full info</div>:null}
-      {user.role === 'admin'?<div className="couriers-item-row__col">Edit</div>:null}
-      {user.role === 'admin'?<div className="couriers-item-row__col">Delete</div>:null}
+      {user.role === 'admin'?<div className="couriers-item-row__col def-btn">Full info</div>:null}
+      {user.role === 'admin'?<div className="couriers-item-row__col def-btn">Edit</div>:null}
+      {user.role === 'admin'?<div className="couriers-item-row__col def-btn">Delete</div>:null}
 
-      {(user.role === 'user')&&(courierStatus==='free')?<div className="couriers-item-row__col">Reserve</div>:null}
-      {(user.role === 'user')&&(courierStatus==='reserved')?<div className="couriers-item-row__col" onClick={()=>{setFullInfo({active: true, courierId: courierId});console.log(courierId)}}>Full info</div>:null}
-      {(user.role === 'user')&&(courierStatus==='reserved')?<div className="couriers-item-row__col">Unreserve</div>:null}
+      {(user.role === 'user')&&(courierStatus==='free')?<div className="couriers-item-row__col def-btn">Reserve</div>:null}
+      {(user.role === 'user')&&(courierStatus==='reserved')?<div className="couriers-item-row__col def-btn" onClick={()=>{setFullInfo({active: true, courierId: courierId});console.log(courierId)}}>Full info</div>:null}
+      {(user.role === 'user')&&(courierStatus==='reserved')?<div className="couriers-item-row__col def-btn">Unreserve</div>:null}
     </div>
   );
 };

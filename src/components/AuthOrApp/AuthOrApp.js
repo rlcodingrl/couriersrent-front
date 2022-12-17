@@ -3,7 +3,7 @@ import Main from "../Main";
 import Auth from "../Auth";
 import React, { useContext, useEffect } from "react";
 import { UserContext } from "../app/app";
-import { ifValidJwtFunc } from "../../services/ifValidJwtFunc";
+import { ifValidJwtFunc } from "../../services/auth/ifValidJwtFunc";
 
 const AuthOrApp = () => {
   let { user, setUser, ifAuthenticated, setIfAuthenticated } =

@@ -15,7 +15,7 @@ export const fullInfoContext = React.createContext({});
 const Couriers = ({status}) => {
 
   const [courierStatus]=useState(status)
-  const [fullInfo,setFullInfo] = useState({active: false, userId: ''})
+  const [fullInfo,setFullInfo] = useState({active: false, userId: ''})  // this state is object about component fullInfo that describe {active,id}
 
   console.log(fullInfo)
 

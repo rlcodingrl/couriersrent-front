@@ -1,18 +1,37 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 
 import "./FullInfoCourier.css";
 
+import { UserContext } from "../../../app/app";
 import { fullInfoContext } from "../Couriers";
 
-const FullInfoCourier = ({chosenCourier}) => {
+import FullInfoCourierHeader from "./FullInfoCourierHeader";
+import FullInfoCourierBody from "./FullInfoCourierBody";
 
-  const [courier]=useState(chosenCourier)
+import getCourier from "../../../../services/getCourier";
+
+const FullInfoCourier = () => {
+
+  const {user}=useContext(UserContext)
   const {fullInfo,setFullInfo}=useContext(fullInfoContext)
+
+  const [courierFullInfo, setCourierFullInfo]=useState({})
+
+
+  useEffect(()=>{
+    // console.log(user)
+    console.log(fullInfo.courierId)
+    getCourier(setCourierFullInfo, null, user, fullInfo.courierId)
+  },[fullInfo, user])
+
+  console.log(courierFullInfo)
 
   return (
     <div className={fullInfo.active===true?"full-info-courier active":"full-info-courier"}>
-      FullInfoCourier component . id of user {fullInfo.courierId}
-      <span className='close-btn' onClick={()=>{setFullInfo({active: false})}}>Close btn</span>
+
+      <FullInfoCourierHeader setFullInfo={setFullInfo}></FullInfoCourierHeader>
+      <FullInfoCourierBody courierFullInfo={courierFullInfo}></FullInfoCourierBody>
+
     </div>
   );
 };

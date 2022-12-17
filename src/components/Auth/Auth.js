@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { loginHandler } from "../../services/loginHandler";
+import { loginHandler } from "../../services/auth/loginHandler";
 import { UserContext } from "../app/app";
 
 import "./Auth.css";
