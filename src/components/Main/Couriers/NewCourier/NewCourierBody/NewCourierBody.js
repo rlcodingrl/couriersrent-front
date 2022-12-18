@@ -20,9 +20,19 @@ const NewCourierBody = () => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="new-courier-body">
         <div className="new-courier-1clm new-courier-clm">
-          new-courier-body component
-          <div className="new-courier-line__description">Name</div>
-          <div></div>
+          <label>
+            <div className="new-courier-line__description">Name</div>
+            <div>
+              <input {...register('firstName', {
+                required: true
+              })} />
+            </div>
+            <div>
+              {errors?.firstName && <p>Error!</p>}
+            </div>
+          </label>
+          
+          
           <div className="new-courier-line__description">Holder Name</div>
           <div></div>
           <div className="new-courier-line__description">DOB (mm/dd/yyyy)</div>
