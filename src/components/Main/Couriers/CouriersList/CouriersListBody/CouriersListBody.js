@@ -22,7 +22,7 @@ const CouriersListBody = () => {
 
   // eslint-disable-next-line
   useEffect(() => {
-    getCouriers(setCouriersData, courierStatus, user);
+    getCouriers(courierStatus, user).then(res=>setCouriersData(res));
   }, [user, courierStatus,courierListBodyCounter]);
 
   return (
