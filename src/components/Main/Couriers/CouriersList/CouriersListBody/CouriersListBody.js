@@ -12,7 +12,8 @@ export const courierListBodyCounterContext = React.createContext({});
 
 const CouriersListBody = () => {
   const [courierListBodyCounter, setCourierListBodyCounter] = useState(0);  // state to update courier list
-  console.log(courierListBodyCounter)
+  // console.log(courierListBodyCounter)
+
   const [couriersData, setCouriersData] = useState(couriersDataDef);
 
   // eslint-disable-next-line

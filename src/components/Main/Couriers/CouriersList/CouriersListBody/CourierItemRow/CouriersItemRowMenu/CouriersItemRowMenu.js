@@ -21,7 +21,14 @@ const CourierItemRowMenu = ({courierId}) => {
 
   return (
     <div className="couriers-item-row-menu">
-      {user.role === 'admin'?<div className="couriers-item-row__col def-btn">Full info</div>:null}
+      {((user.role === 'user')&&(courierStatus==='reserved'))||(user.role === 'admin')
+        ?<div className="couriers-item-row__col def-btn" 
+              onClick={()=>{setFullInfo({active: true, courierId: courierId});console.log(courierId)}}>
+                Full info
+         </div>
+        :null
+      }
+
       {user.role === 'admin'?<div className="couriers-item-row__col def-btn">Edit</div>:null}
       {user.role === 'admin'?<div className="couriers-item-row__col def-btn">Delete</div>:null}
 
@@ -31,7 +38,7 @@ const CourierItemRowMenu = ({courierId}) => {
                 Reserve
          </div>
         :null}
-      {(user.role === 'user')&&(courierStatus==='reserved')?<div className="couriers-item-row__col def-btn" onClick={()=>{setFullInfo({active: true, courierId: courierId});console.log(courierId)}}>Full info</div>:null}
+
       {(user.role === 'user')&&(courierStatus==='reserved')
         ?<div className="couriers-item-row__col def-btn"
               onClick={()=>{changeCourierStatus(courierId,'Free',setCourierListBodyCounter)}}>
