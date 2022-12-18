@@ -3,6 +3,10 @@ body, html, #root, .App {
     height: 100%;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 .def-btn {
     cursor: pointer;
 }
