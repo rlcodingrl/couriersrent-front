@@ -24,7 +24,7 @@ const FullInfoCourier = () => {
     getCourier(setCourierFullInfo, null, user, fullInfo.courierId)
   },[fullInfo, user])
 
-  console.log(courierFullInfo)
+  // console.log(courierFullInfo)
 
   return (
     <div className={fullInfo.active===true?"full-info-courier active":"full-info-courier"}>
