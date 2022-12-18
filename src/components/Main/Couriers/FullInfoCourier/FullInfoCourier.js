@@ -20,7 +20,7 @@ const FullInfoCourier = () => {
 
   useEffect(()=>{
     // console.log(user)
-    console.log(fullInfo.courierId)
+    // console.log(fullInfo.courierId)
     getCourier(setCourierFullInfo, null, user, fullInfo.courierId)
   },[fullInfo, user])
 

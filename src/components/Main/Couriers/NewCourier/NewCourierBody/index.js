@@ -1,3 +1,3 @@
-import FullInfoCourierBody from "./FullInfoCourierBody";
+import NewCourierBody from "./NewCourierBody";
 
-export default FullInfoCourierBody;
+export default NewCourierBody;

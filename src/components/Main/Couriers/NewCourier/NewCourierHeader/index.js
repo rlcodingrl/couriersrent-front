@@ -1,3 +1,3 @@
-import FullInfoCourierHeader from "./FullInfoCourierHeader";
+import NewCourierHeader from "./NewCourierHeader";
 
-export default FullInfoCourierHeader;
+export default NewCourierHeader;

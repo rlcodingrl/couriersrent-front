@@ -1,12 +1,12 @@
-.full-info-body {
+.new-courier-body {
     display: flex;
 }
 
-.full-info-clm {
+.new-courier-clm {
     width: 25%;
 }
 
-.full-info-line__description {
+.new-courier-line__description {
     font-size: 14px;
     color: rgb(62, 97, 97);
 }
