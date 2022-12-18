@@ -10,7 +10,6 @@ import NewCourierBody from "./NewCourierBody";
 const NewCourier = () => {
 
   const {newCourier,setNewCourier} = useContext(newCourierContext)
-  console.log(`newCourier = ${newCourier}`)
 
   return (
     <div className={newCourier===true?"new-courier active":"new-courier"}>
