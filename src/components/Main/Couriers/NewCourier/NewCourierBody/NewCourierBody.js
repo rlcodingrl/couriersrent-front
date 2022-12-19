@@ -24,7 +24,8 @@ const NewCourierBody = () => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="new-courier-body">
         <div className="new-courier-1clm new-courier-clm">
-          <label>
+
+          <label className="new-courier-line">
             <div className="new-courier-line__description">Name</div>
             <div>
               <input {...register('firstName', {
@@ -35,7 +36,7 @@ const NewCourierBody = () => {
                 }
               })} />
             </div>
-            <div>
+            <div className="new-courier-line__error">
               {errors?.firstName && <p>{errors?.firstName?.message || "Error!"}</p>}
             </div>
           </label>
