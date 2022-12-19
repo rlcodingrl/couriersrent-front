@@ -29,3 +29,7 @@
 .new-courier-clm select {
     width: 120px;
 }
+
+.success-msg {
+    color: rgb(12, 147, 102);
+}

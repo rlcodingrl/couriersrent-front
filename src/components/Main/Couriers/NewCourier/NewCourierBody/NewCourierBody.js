@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import {useForm} from 'react-hook-form'
+
+import createNewUser from "../../../../../services/createNewUser";
 
 import "./NewCourierBody.css";
 
 const NewCourierBody = () => {
+
+  const [ifCreateSuccessful, setIfCreateSuccessful] = useState(false)
+
   const {
     register,
     formState: {
@@ -18,11 +23,15 @@ const NewCourierBody = () => {
   const onSubmit = (data) => {
     // alert(JSON.stringify(data));
     console.log(data)
+    createNewUser(data).then(res=>{
+      if (res.status===true) {setIfCreateSuccessful(true)}
+      // if (res )
+    })
     reset()
   }
 
   return (
-    <form className="new-courier-form" onSubmit={handleSubmit(onSubmit)}>
+    <form className="new-courier-form" onSubmit={handleSubmit(onSubmit)} onChange={()=>{setIfCreateSuccessful(false)}}>
       <div className="new-courier-body">
         <div className="new-courier-1clm new-courier-clm">
           <label className="new-courier-line">
@@ -72,7 +81,7 @@ const NewCourierBody = () => {
             <div>
               <input
                 {...register("DOB", {
-                  required: "Field is required",
+                  required: "DOB is required",
                   // pattern:  /(\d{2}\/\d{2}\/\d{4})/
                 })}
               />
@@ -218,9 +227,9 @@ const NewCourierBody = () => {
           <label className="new-courier-line">
             <div className="new-courier-line__description">Pers/Bus</div>
             <div>
-              <select {...register("persOrBus")}>
+              <select {...register("persOrBus")} value="Bus">
                 <option value="Pers">Pers</option>
-                <option value="Bus" selected>Bus</option>
+                <option value="Bus">Bus</option>
               </select>
             </div>
             <div className="new-courier-line__error">
@@ -275,8 +284,8 @@ const NewCourierBody = () => {
           <label className="new-courier-line">
             <div className="new-courier-line__description">Status</div>
             <div>
-              <select {...register("status")}>
-                <option value="Free" selected>Free</option>
+              <select {...register("status")} value="Free">
+                <option value="Free">Free</option>
               </select>
             </div>
             <div className="new-courier-line__error">
@@ -304,6 +313,7 @@ const NewCourierBody = () => {
           place for chat
           <input type="submit" disabled={!isValid} />
           {/* <input type="button" onClick={()=>{console.log('reset'); document.querySelector(".new-courier-form").reset()}} value="reset"/> */}
+          {ifCreateSuccessful && <p className="success-msg">user creating done</p>}
         </div>
       </div>
     </form>
