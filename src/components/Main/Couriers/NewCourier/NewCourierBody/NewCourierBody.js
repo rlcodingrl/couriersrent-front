@@ -7,13 +7,17 @@ const NewCourierBody = () => {
   const {
     register,
     formState: {
-      errors,
+      errors, isValid
     },
     handleSubmit,
-  } =useForm();
+    reset
+  } =useForm({
+    mode:"onChange"
+  });
 
   const onSubmit = (data) => {
-    alert(JSON.stringify(data))
+    alert(JSON.stringify(data));
+    reset()
   }
 
   return (
@@ -24,11 +28,15 @@ const NewCourierBody = () => {
             <div className="new-courier-line__description">Name</div>
             <div>
               <input {...register('firstName', {
-                required: true
+                required: 'Field is required',
+                minLength: {
+                  value: 5,
+                  message: 'Minimum 5 letters'
+                }
               })} />
             </div>
             <div>
-              {errors?.firstName && <p>Error!</p>}
+              {errors?.firstName && <p>{errors?.firstName?.message || "Error!"}</p>}
             </div>
           </label>
           
@@ -74,7 +82,7 @@ const NewCourierBody = () => {
         </div>
         <div className="full-info-4clm full-info-clm">
           place for chat
-          <input type="submit" />
+          <input type="submit" disabled={!isValid}/>
         </div>
       </div>
     </form>
