@@ -8,11 +8,10 @@ import couriersDataDef from "../../../../../data/couriersDataDef";
 import { StatusContext } from "../../Couriers";
 import { UserContext } from "../../../../app/app";
 
-export const courierListBodyCounterContext = React.createContext({});
+export const courierUpdateContext = React.createContext({});
 
 const CouriersListBody = () => {
-  const [courierListBodyCounter, setCourierListBodyCounter] = useState(0);  // state to update courier list
-  // console.log(courierListBodyCounter)
+  const [courierCounter, setCourierCounter] = useState(0);  // state to update courier list
 
   const [couriersData, setCouriersData] = useState(couriersDataDef);
 
@@ -24,18 +23,18 @@ const CouriersListBody = () => {
   // eslint-disable-next-line
   useEffect(() => {
     getCouriers(courierStatus, user).then(res=>setCouriersData(res));
-  }, [user, courierStatus,courierListBodyCounter]);
+  }, [user, courierStatus,courierCounter]);
 
   return (
-    <courierListBodyCounterContext.Provider
-      value={ setCourierListBodyCounter }
+    <courierUpdateContext.Provider
+      value={ setCourierCounter }
     >
       <div className="couriers-list-body">
         {couriersData.map((el) => (
           <CourierItemRow courier={el} key={el._id} />
         ))}
       </div>
-    </courierListBodyCounterContext.Provider>
+    </courierUpdateContext.Provider>
   );
 };
 
