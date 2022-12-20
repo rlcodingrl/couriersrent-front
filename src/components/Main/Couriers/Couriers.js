@@ -13,6 +13,8 @@ export const StatusContext = React.createContext({});
 export const fullInfoContext = React.createContext({});
 export const newCourierContext = React.createContext({});
 
+export const courierUpdateContext = React.createContext({});
+
 const Couriers = ({status}) => {
 
   const [courierStatus]=useState(status)
@@ -23,11 +25,15 @@ const Couriers = ({status}) => {
   // eslint-disable-next-line
   const {user} = useContext(UserContext);
 
+  const [courierCounter, setCourierCounter] = useState(0);
 
   return (
     <StatusContext.Provider value={courierStatus}>
     <fullInfoContext.Provider value={{fullInfo, setFullInfo}}>
     <newCourierContext.Provider value={{newCourier,setNewCourier}}>
+    <courierUpdateContext.Provider
+      value={ {courierCounter, setCourierCounter} }
+    >
 
       <div className="couriers">
         this is couriers comp {status} 
@@ -38,6 +44,7 @@ const Couriers = ({status}) => {
       <FullInfoCourier/>
       <NewCourier/>
 
+    </courierUpdateContext.Provider>
     </newCourierContext.Provider>
     </fullInfoContext.Provider> 
     </StatusContext.Provider>

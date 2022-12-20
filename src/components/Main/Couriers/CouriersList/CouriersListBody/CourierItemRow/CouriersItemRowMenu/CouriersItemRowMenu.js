@@ -5,7 +5,7 @@ import "./CouriersItemRowMenu.css";
 import { UserContext } from "../../../../../../app/app";
 import { StatusContext } from "../../../../Couriers";
 import { fullInfoContext } from "../../../../Couriers";
-import { courierUpdateContext } from "../../CouriersListBody";
+import { courierUpdateContext } from "../../../../Couriers"; 
 
 import changeCourierStatus from "../../../../../../../services/changeCourierStatus";
 
@@ -13,7 +13,7 @@ const CourierItemRowMenu = ({courierId}) => {
 
   const {user} = useContext(UserContext)
   const courierStatus=useContext(StatusContext)
-  const setCourierCounter = useContext(courierUpdateContext)
+  const { setCourierCounter } = useContext(courierUpdateContext)
 
   // eslint-disable-next-line
   const {fullInfo,setFullInfo}=useContext(fullInfoContext)
