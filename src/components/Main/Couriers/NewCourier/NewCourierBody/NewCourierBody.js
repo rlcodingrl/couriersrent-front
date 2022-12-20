@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {useForm} from 'react-hook-form'
 
 import createNewUser from "../../../../../services/createNewUser";
 
+import { courierUpdateContext } from "../../Couriers";
+
 import "./NewCourierBody.css";
 
-const NewCourierBody = () => {
+const NewCourierBody = ({setNewCourier}) => {
+
+  const {setCourierCounter} = useContext(courierUpdateContext)
 
   const [ifCreateSuccessful, setIfCreateSuccessful] = useState(false)
 
@@ -24,15 +28,21 @@ const NewCourierBody = () => {
     // alert(JSON.stringify(data));
     console.log(data)
     createNewUser(data).then(res=>{
-      if (res.status===true) {setIfCreateSuccessful(true)}
-      // if (res )
-      reset()
+      if (res.status===true) {
+        setIfCreateSuccessful(true)
+        setCourierCounter(prev=>prev+1)
+        reset()
+      }
+      
     })
     
   }
 
   return (
     <form className="new-courier-form" onSubmit={handleSubmit(onSubmit)} onChange={()=>{setIfCreateSuccessful(false)}}>
+      <div className="new-courier-header">
+        <span className='close-btn def-btn' onClick={()=>{reset();setNewCourier(false)}}>Close new courier</span>
+      </div>
       <div className="new-courier-body">
         <div className="new-courier-1clm new-courier-clm">
           <label className="new-courier-line">

@@ -33,3 +33,11 @@
 .success-msg {
     color: rgb(12, 147, 102);
 }
+
+.new-courier-header .close-btn {
+    color: blue;   
+}
+
+.new-courier-header {
+    text-align: right;
+}

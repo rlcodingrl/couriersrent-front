@@ -13,6 +13,7 @@ const AuthOrApp = () => {
 
   useEffect(() => {
     ifValidJwtFunc(user.jwt, setIfAuthenticated, setUser);
+    // eslint-disable-next-line
   }, []);
 
   return ifAuthenticated ? (

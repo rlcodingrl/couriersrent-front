@@ -8,6 +8,7 @@ import { fullInfoContext } from "../../../../Couriers";
 import { courierUpdateContext } from "../../../../Couriers"; 
 
 import changeCourierStatus from "../../../../../../../services/changeCourierStatus";
+import deleteCourier from "../../../../../../../services/deleteCourier";
 
 const CourierItemRowMenu = ({courierId}) => {
 
@@ -30,7 +31,12 @@ const CourierItemRowMenu = ({courierId}) => {
       }
 
       {user.role === 'admin'?<div className="couriers-item-row__col def-btn">Edit</div>:null}
-      {user.role === 'admin'?<div className="couriers-item-row__col def-btn">Delete</div>:null}
+      {user.role === 'admin'
+        ?<div className="couriers-item-row__col def-btn" 
+              onClick={()=>{deleteCourier(courierId,setCourierCounter)}}>
+          Delete
+          </div>
+        :null}
 
       {(user.role === 'user')&&(courierStatus==='free')
         ?<div className="couriers-item-row__col def-btn" 

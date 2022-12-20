@@ -5,7 +5,6 @@ import "./NewCourier.css";
 
 import { newCourierContext } from "../Couriers";
 
-import NewCourierHeader from "./NewCourierHeader";
 import NewCourierBody from "./NewCourierBody";
 
 const NewCourier = () => {
@@ -15,8 +14,7 @@ const NewCourier = () => {
   return (
     <div className={newCourier===true?"new-courier active":"new-courier"}>
 
-      <NewCourierHeader setNewCourier={setNewCourier}></NewCourierHeader>
-      <NewCourierBody></NewCourierBody>
+      <NewCourierBody setNewCourier={setNewCourier}></NewCourierBody>
 
     </div>
   );
