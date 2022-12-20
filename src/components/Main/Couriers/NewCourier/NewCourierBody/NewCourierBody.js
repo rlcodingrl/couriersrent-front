@@ -26,8 +26,9 @@ const NewCourierBody = () => {
     createNewUser(data).then(res=>{
       if (res.status===true) {setIfCreateSuccessful(true)}
       // if (res )
+      reset()
     })
-    reset()
+    
   }
 
   return (

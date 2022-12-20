@@ -1,10 +1,13 @@
 import { back } from "../config/config";
 
 const createNewUser = (data) => {
+
+  const jwt = localStorage.getItem('jwt');  
+
   var myHeaders = new Headers();
   myHeaders.append(
     "Authorization",
-    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzkwOTg5Y2FkMzhkNjM0M2VmNWFjYTEiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NzEzNzI1OTgsImV4cCI6MTY3MTU0NTM5OH0.IrA9GrBofAskG6kvvGh1ffDWYX9QXn6iop3-pggylcM"
+    `Bearer ${jwt}`
   );
   myHeaders.append("Content-Type", "application/json");
 

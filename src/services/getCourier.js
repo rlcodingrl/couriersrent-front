@@ -31,10 +31,11 @@ const getCouriers = async (setCouriersData, courierStatus, user, id = 'none') =>
   };
 
   let path = `${back}/couriers/${courierStatus}`;
+
+  // console.log(id)
   if (id !== 'none') {
     path = `${back}/couriers/${id}`
-  }
-
+  } else {return }
 
 
   fetch(path, requestOptions)
@@ -45,7 +46,7 @@ const getCouriers = async (setCouriersData, courierStatus, user, id = 'none') =>
       if (id !== 'none') { setCouriersData(result.data.courier); return }
       setCouriersData(filterCouriers(result.data.couriers));
     })
-    .catch((error) => console.log("error", error));
+    .catch((error) => console.log("error1", error));
 };
 
 export default getCouriers;
