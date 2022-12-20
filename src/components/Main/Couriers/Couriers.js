@@ -36,7 +36,10 @@ const Couriers = ({status}) => {
     >
 
       <div className="couriers">
-        this is couriers comp {status} 
+
+        {/* this is couriers comp {status}  */}
+
+        
         <CouriersNav />
         <CouriersList />
       </div>
