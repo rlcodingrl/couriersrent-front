@@ -8,10 +8,12 @@ import CouriersList from "./CouriersList/CouriersList";
 import { UserContext } from "../../app/app";
 import FullInfoCourier from "./FullInfoCourier";
 import NewCourier from "./NewCourier";
+import Spinner from "../../Spinner";
 
 export const StatusContext = React.createContext({});
 export const fullInfoContext = React.createContext({});
 export const newCourierContext = React.createContext({});
+export const spinnerContext = React.createContext(false)
 
 export const courierUpdateContext = React.createContext({});
 
@@ -26,6 +28,7 @@ const Couriers = ({status}) => {
   const {user} = useContext(UserContext);
 
   const [courierCounter, setCourierCounter] = useState(0);
+  const [spinner, setSpinner] = useState(false)
 
   return (
     <StatusContext.Provider value={courierStatus}>
@@ -34,19 +37,21 @@ const Couriers = ({status}) => {
     <courierUpdateContext.Provider
       value={ {courierCounter, setCourierCounter} }
     >
+    <spinnerContext.Provider value={setSpinner}>
 
       <div className="couriers">
 
         {/* this is couriers comp {status}  */}
-
-        
+       
         <CouriersNav />
         <CouriersList />
+        {spinner?<Spinner/>:null}
       </div>
       
       <FullInfoCourier/>
       <NewCourier/>
 
+    </spinnerContext.Provider>
     </courierUpdateContext.Provider>
     </newCourierContext.Provider>
     </fullInfoContext.Provider> 

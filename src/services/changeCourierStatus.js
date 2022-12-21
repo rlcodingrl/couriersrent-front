@@ -23,8 +23,9 @@ const changeCourierStatus = async (courierId, newStatus, funcToUpdateCourierList
     .then(response => response.text())
     .then(result => 
       {
-        console.log(result);
+        // console.log(result);
         funcToUpdateCourierList(prev=>prev+1)
+        console.log('func changeCouriersStatus finished')
       })
     .catch(error => console.log('error', error));
 }

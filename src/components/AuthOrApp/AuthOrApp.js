@@ -16,13 +16,17 @@ const AuthOrApp = () => {
     // eslint-disable-next-line
   }, []);
 
-  return ifAuthenticated ? (
+  return (
     <>
-      <Header />
-      <Main />
+      {ifAuthenticated ? (
+        <React.Fragment>
+          <Header />
+          <Main />
+        </React.Fragment>
+      ) : (
+        <Auth setIfAuthenticated={setIfAuthenticated} />
+      )}
     </>
-  ) : (
-    <Auth setIfAuthenticated={setIfAuthenticated} />
   );
 };
 export default AuthOrApp;

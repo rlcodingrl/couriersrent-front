@@ -6,12 +6,14 @@ import { UserContext } from "../../../../../../app/app";
 import { StatusContext } from "../../../../Couriers";
 import { fullInfoContext } from "../../../../Couriers";
 import { courierUpdateContext } from "../../../../Couriers"; 
+import { spinnerContext } from "../../../../Couriers";
 
 import changeCourierStatus from "../../../../../../../services/changeCourierStatus";
 import deleteCourier from "../../../../../../../services/deleteCourier";
 
 const CourierItemRowMenu = ({courierId}) => {
 
+  const setSpinner = useContext(spinnerContext)
   const {user} = useContext(UserContext)
   const courierStatus=useContext(StatusContext)
   const { setCourierCounter } = useContext(courierUpdateContext)
@@ -40,14 +42,20 @@ const CourierItemRowMenu = ({courierId}) => {
 
       {(user.role === 'user')&&(courierStatus==='free')
         ?<div className="couriers-item-row__col def-btn" 
-              onClick={()=>{changeCourierStatus(courierId,user.name,setCourierCounter)}}>
+              onClick={()=>{
+                setSpinner(true)
+                changeCourierStatus(courierId,user.name,setCourierCounter)
+                }}>
                 Reserve
          </div>
         :null}
 
       {(user.role === 'user')&&(courierStatus==='reserved')
         ?<div className="couriers-item-row__col def-btn"
-              onClick={()=>{changeCourierStatus(courierId,'Free',setCourierCounter)}}>
+              onClick={()=>{
+                setSpinner(true)
+                changeCourierStatus(courierId,'Free',setCourierCounter)
+                }}>
                 Unreserve
          </div>
         :null}
