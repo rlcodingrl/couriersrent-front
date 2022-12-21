@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {useForm} from 'react-hook-form'
 
 import postNewNews from "../../../../services/news/postNewNews";
@@ -10,6 +10,8 @@ import "./NewNews.css";
 
 
 const NewNews = () => {
+
+  const [ifCreateSuccessful, setIfCreateSuccessful] = useState(false)
 
   const {
     register,
@@ -29,7 +31,7 @@ const NewNews = () => {
     console.log(data)
     postNewNews(data).then(res=>{
       if (res.status===true) {
-        // setIfCreateSuccessful(true)
+        setIfCreateSuccessful(true)
         // setCourierCounter(prev=>prev+1)
         reset()
       }
@@ -39,21 +41,25 @@ const NewNews = () => {
   }
 
   return (
-    <form className="new-news-form" onSubmit={handleSubmit(onSubmit)}>
+    <form className="new-news-form" onSubmit={handleSubmit(onSubmit)} onChange={()=>{setIfCreateSuccessful(false)}}>
       <label className="new-news-line">
-            <div className="new-news-line__description">message</div>
+            {/* <div className="new-news-line__description">message</div> */}
             <div>
-              <input
+              < textarea className="new-news-form__input-msg"
                 {...register("message", {
                   required: "Message is required",
                 })}
               />
             </div>
             <div className="new-news-line__error">
-              {errors?.message && <p>{errors?.message?.message || "Error!"}</p>}
+              
             </div>
           </label>
       <input type="submit" disabled={!isValid} />
+      {errors?.message && <span>{errors?.message?.message || "Error!"}</span>}
+      {ifCreateSuccessful && <span className="success-msg">msg created successful </span>}
+
+      
     </form>
   )
 
