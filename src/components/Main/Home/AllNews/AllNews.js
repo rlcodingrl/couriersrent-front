@@ -9,7 +9,7 @@ const AllNews = () => {
 
   const [news, setNews]=useState([])
 
-  console.log(news)
+  // console.log(news)
 
   useEffect(()=>{
     getAllNews().then(res=>{

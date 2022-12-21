@@ -1,27 +1,35 @@
 import { back } from "../../config/config";
 
-const getAllNews = async () => {
-  // console.log("getAllNews works");
+const postNewNews = (data) => {
   const jwt = localStorage.getItem("jwt");
+
+  console.log(data.message)
 
   var myHeaders = new Headers();
   myHeaders.append("Authorization", `Bearer ${jwt}`);
+  myHeaders.append("Content-Type", "application/json");
+
+  var raw = JSON.stringify({
+    text: data.message,
+  });
 
   var requestOptions = {
-    method: "GET",
+    method: "POST",
     headers: myHeaders,
+    body: raw,
     redirect: "follow",
   };
 
-  let funcRes = await fetch(`${back}/news/all`, requestOptions)
+  const resFunc = fetch(`${back}/news`, requestOptions)
     .then((response) => response.json())
     .then((result) => {
-      return result.data.news.reverse()
+      console.log(result)
+      return result
     })
     .catch((error) => console.log("error", error));
-  
-  return funcRes
-  
+
+    return resFunc
+
 };
 
-export default getAllNews;
+export default postNewNews
