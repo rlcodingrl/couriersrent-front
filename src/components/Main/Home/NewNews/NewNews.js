@@ -9,7 +9,7 @@ import "./NewNews.css";
 
 
 
-const NewNews = () => {
+const NewNews = ({setNewsCounter}) => {
 
   const [ifCreateSuccessful, setIfCreateSuccessful] = useState(false)
 
@@ -32,7 +32,7 @@ const NewNews = () => {
     postNewNews(data).then(res=>{
       if (res.status===true) {
         setIfCreateSuccessful(true)
-        // setCourierCounter(prev=>prev+1)
+        setNewsCounter(prev=>prev+1)
         reset()
       }
       

@@ -1,6 +1,6 @@
 import { back } from "../../config/config";
 
-const postNewNews = (data) => {
+const postNewNews = (data) => {''
   const jwt = localStorage.getItem("jwt");
 
   console.log(data.message)

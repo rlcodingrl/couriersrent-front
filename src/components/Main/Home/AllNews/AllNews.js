@@ -5,7 +5,7 @@ import "./AllNews.css";
 import getAllNews from "../../../../services/news/getAllNews";
 import NewsItemRow from "./NewsItemRow";
 
-const AllNews = () => {
+const AllNews = ({newsCounter}) => {
 
   const [news, setNews]=useState([])
 
@@ -15,7 +15,7 @@ const AllNews = () => {
     getAllNews().then(res=>{
       setNews(res)
     })
-  },[])
+  },[newsCounter])
 
   return (
     <div className="all-news">
