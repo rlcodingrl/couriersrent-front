@@ -1,6 +1,6 @@
 import { back } from "../config/config";
 
-const getCouriers = async (setCouriersData, courierStatus, user, id = 'none') => {
+const getCouriers = async (courierStatus, user, id = 'none') => {
 
     const jwt = localStorage.getItem('jwt')  
 
@@ -38,15 +38,17 @@ const getCouriers = async (setCouriersData, courierStatus, user, id = 'none') =>
   } else {return }
 
 
-  fetch(path, requestOptions)
+  const funcRes = fetch(path, requestOptions)
     .then((response) => response.json())
     .then((result) => {
       console.log(result.data.courier)
     //   console.log(result.data.couriers);
-      if (id !== 'none') { setCouriersData(result.data.courier); return }
-      setCouriersData(filterCouriers(result.data.couriers));
+      if (id !== 'none') { return result.data.courier  }
+      return filterCouriers(result.data.couriers);
     })
     .catch((error) => console.log("error1", error));
+
+    return funcRes
 };
 
 export default getCouriers;

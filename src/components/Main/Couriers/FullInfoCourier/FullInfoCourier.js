@@ -21,7 +21,7 @@ const FullInfoCourier = () => {
   useEffect(()=>{
     // console.log(user)
     // console.log(fullInfo.courierId)
-    getCourier(setCourierFullInfo, null, user, fullInfo.courierId)
+    getCourier(null, user, fullInfo.courierId).then(res=>setCourierFullInfo(res))
   },[fullInfo, user])
 
   // console.log(courierFullInfo)
@@ -30,7 +30,7 @@ const FullInfoCourier = () => {
     <div className={fullInfo.active===true?"full-info-courier active":"full-info-courier"}>
 
       <FullInfoCourierHeader setFullInfo={setFullInfo}></FullInfoCourierHeader>
-      <FullInfoCourierBody courierFullInfo={courierFullInfo}></FullInfoCourierBody>
+      {courierFullInfo&&<FullInfoCourierBody courierFullInfo={courierFullInfo}></FullInfoCourierBody>}
 
     </div>
   );
