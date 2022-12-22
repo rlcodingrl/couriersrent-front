@@ -33,6 +33,7 @@ const CouriersListBody = () => {
       setCouriersData(res);
       setSpinner(false)
     });
+  // eslint-disable-next-line
   }, [user, courierStatus,courierCounter]);
 
   return (

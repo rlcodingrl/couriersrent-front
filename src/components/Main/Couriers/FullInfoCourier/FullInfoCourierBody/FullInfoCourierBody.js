@@ -3,6 +3,9 @@ import React from "react";
 import "./FullInfoCourierBody.css";
 
 const FullInfoCourierBody = ({ courierFullInfo }) => {
+
+  if (!courierFullInfo) {return null} 
+
   return (
     <div className="full-info-body">
       <div className="full-info-1clm full-info-clm">

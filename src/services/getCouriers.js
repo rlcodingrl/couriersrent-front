@@ -47,6 +47,7 @@ const getCouriers = async (courierStatus, user) => {
       // setCouriersData(filterCouriers(result.data.couriers));
     })
     .catch((error) => console.log("error", error));
+  // console.log(`resThisFunc ${resThisFunc}`);
   return resThisFunc
 };
 

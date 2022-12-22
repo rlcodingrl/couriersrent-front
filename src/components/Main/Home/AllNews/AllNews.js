@@ -19,6 +19,7 @@ const AllNews = ({newsCounter}) => {
       setNews(res)
       setSpinner(false);
     })
+    // eslint-disable-next-line
   },[newsCounter])
 
   return (
