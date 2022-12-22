@@ -1,19 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 
 import "./AllNews.css";
 
 import getAllNews from "../../../../services/news/getAllNews";
 import NewsItemRow from "./NewsItemRow";
 
+import { spinnerContext } from "../../../AuthOrApp/AuthOrApp";
+
 const AllNews = ({newsCounter}) => {
 
   const [news, setNews]=useState([])
-
+  const setSpinner = useContext(spinnerContext)
   // console.log(news)
 
   useEffect(()=>{
+    setSpinner(true);
     getAllNews().then(res=>{
       setNews(res)
+      setSpinner(false);
     })
   },[newsCounter])
 

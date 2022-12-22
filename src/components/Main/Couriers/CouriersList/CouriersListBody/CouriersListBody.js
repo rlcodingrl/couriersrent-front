@@ -28,6 +28,7 @@ const CouriersListBody = () => {
 
   // eslint-disable-next-line
   useEffect(() => {
+    setSpinner(true)
     getCouriers(courierStatus, user).then(res=>{
       setCouriersData(res);
       setSpinner(false)
