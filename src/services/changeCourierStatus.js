@@ -19,15 +19,18 @@ const changeCourierStatus = async (courierId, newStatus, funcToUpdateCourierList
     redirect: 'follow'
   };
   
-  fetch(`${back}/couriers/change/status/${courierId}`, requestOptions)
-    .then(response => response.text())
+  const funcRes = fetch(`${back}/couriers/change/status/${courierId}`, requestOptions)
+    .then(response => response.json())
     .then(result => 
       {
-        // console.log(result);
+        // console.log(result)
         funcToUpdateCourierList(prev=>prev+1)
         console.log('func changeCouriersStatus finished')
+        return(result.status)
       })
     .catch(error => console.log('error', error));
+
+  return funcRes
 }
 
 export default changeCourierStatus

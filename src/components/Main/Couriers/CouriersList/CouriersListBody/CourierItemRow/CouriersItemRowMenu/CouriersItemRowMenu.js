@@ -44,7 +44,10 @@ const CourierItemRowMenu = ({courierId}) => {
         ?<div className="couriers-item-row__col def-btn" 
               onClick={()=>{
                 setSpinner(true)
-                changeCourierStatus(courierId,user.name,setCourierCounter)
+                changeCourierStatus(courierId,user.name,setCourierCounter).then(res=> {
+                  if (!res) {
+                  // setSpinner(false)
+                }})
                 }}>
                 Reserve
          </div>
@@ -54,7 +57,12 @@ const CourierItemRowMenu = ({courierId}) => {
         ?<div className="couriers-item-row__col def-btn"
               onClick={()=>{
                 setSpinner(true)
-                changeCourierStatus(courierId,'Free',setCourierCounter)
+                changeCourierStatus(courierId,'Free',setCourierCounter).then(res=> {
+                  console.log(res);
+                  if (!res) {
+                  
+                  // setSpinner(false)
+                }})
                 }}>
                 Unreserve
          </div>
