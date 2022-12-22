@@ -6,7 +6,7 @@ import { UserContext } from "../../../../../../app/app";
 import { StatusContext } from "../../../../Couriers";
 import { fullInfoContext } from "../../../../Couriers";
 import { courierUpdateContext } from "../../../../Couriers"; 
-import { spinnerContext } from "../../../../Couriers";
+import { spinnerContext } from "../../../../../../AuthOrApp/AuthOrApp";
 
 import changeCourierStatus from "../../../../../../../services/changeCourierStatus";
 import deleteCourier from "../../../../../../../services/deleteCourier";
